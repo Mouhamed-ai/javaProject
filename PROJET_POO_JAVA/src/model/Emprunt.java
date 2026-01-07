@@ -15,7 +15,7 @@ public class Emprunt {
     protected double penalite;
 
     public Emprunt(int id_emprunt,
-                   Utilisateur id_utilisateur,
+                   Utilisateur utilisateur,
                    Livre livre,
                    LocalDate date_emprunt,
                    LocalDate date_retour_prevue,
@@ -23,7 +23,7 @@ public class Emprunt {
                    double penalite) {
 
         this.id_emprunt = id_emprunt;
-        this.utilisateur = id_utilisateur;
+        this.utilisateur = utilisateur;
         this.livre = livre;
         this.date_emprunt = date_emprunt;
         this.date_retour_prevue = date_retour_prevue;
