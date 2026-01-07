@@ -12,7 +12,7 @@ import model.Livre;
 
 public class LivreDAO {
 
-    // 1. AJOUTER (Déjà fait, très bien)
+    // 1. AJOUTER 
     public void ajouterLivre(Livre livre) throws SQLException {
         String query = "INSERT INTO livres (titre, auteur, isbn, quantite_totale, quantite_disponible) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = DBConnection.getConnection();
@@ -26,7 +26,7 @@ public class LivreDAO {
         }
     }
 
-    // 2. AFFICHER TOUS (Déjà fait, respecte la consigne des Collections)
+    // 2. AFFICHER TOUS 
     public List<Livre> getAllLivres() throws SQLException {
         List<Livre> livres = new ArrayList<>(); 
         String query = "SELECT * FROM livres";
@@ -47,7 +47,7 @@ public class LivreDAO {
         return livres;
     }
 
-    // 3. MODIFIER (MANQUANT dans ton code)
+    // 3. MODIFIER 
     public void modifierLivre(Livre livre) throws SQLException {
         String query = "UPDATE livres SET titre=?, auteur=?, isbn=?, quantite_totale=?, quantite_disponible=? WHERE id_livre=?";
         try (Connection conn = DBConnection.getConnection();
@@ -62,7 +62,7 @@ public class LivreDAO {
         }
     }
 
-    // 4. SUPPRIMER (Déjà fait)
+    // 4. SUPPRIMER 
     public void supprimerLivre(int id) throws SQLException {
         String query = "DELETE FROM livres WHERE id_livre = ?";
         try (Connection conn = DBConnection.getConnection();
@@ -72,7 +72,7 @@ public class LivreDAO {
         }
     }
 
-    // 5. RECHERCHER (MANQUANT - Obligatoire page 2 du PDF)
+    // 5. RECHERCHER 
     // Cette méthode cherche dans le titre, l'auteur OU l'ISBN
     public List<Livre> rechercherLivres(String motCle) throws SQLException {
         List<Livre> resultats = new ArrayList<>();
