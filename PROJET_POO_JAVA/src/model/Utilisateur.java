@@ -12,8 +12,8 @@ public abstract class Utilisateur {
     protected String matricule;
     protected UtilisateurType type_utilisateur;
 
-    public Utilisateur(int id_utilisateur, String nom, String prenom, String matricule, UtilisateurType type_utilisateur) {
-        this.id_utilisateur = id_utilisateur;
+    public Utilisateur( String nom, String prenom, String matricule, UtilisateurType type_utilisateur) {
+        this.id_utilisateur = 0;
         this.nom = nom;
         this.prenom = prenom;
         this.matricule = matricule;

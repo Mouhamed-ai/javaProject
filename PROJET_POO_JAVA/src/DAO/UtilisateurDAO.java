@@ -24,10 +24,13 @@ public class UtilisateurDAO {
             
             int rowsAffected = pstmt.executeUpdate();
             
+            
             if (rowsAffected > 0) {
                 try (ResultSet generatedKeys = pstmt.getGeneratedKeys()) {
+                    
                     if (generatedKeys.next()) {
                         utilisateur.setIdUtilisateur(generatedKeys.getInt(1));
+                        
                     }
                 }
             }
@@ -40,12 +43,11 @@ public class UtilisateurDAO {
         List<Utilisateur> utilisateurs = new ArrayList<>();
         String sql = "SELECT * FROM utilisateurs";
         
-        try (Connection conn = DBConnection.getConnection();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-            
-            while (rs.next()) {
-                Utilisateur user = creerUtilisateurFromResultSet(rs);
+         try (Connection conn = DBConnection.getConnection(); 
+             ResultSet rs = stmt.executeQuery(sql)) {  
+           
+            while (rs.next()) { 
+                Utilisateur user = creerUtilisateurFromResultSet(rs); 
                 utilisateurs.add(user);
             }
         }
@@ -53,8 +55,8 @@ public class UtilisateurDAO {
     }
     
 
-    private Utilisateur creerUtilisateurFromResultSet(ResultSet rs) throws SQLException {
-        int id = rs.getInt("id_utilisateur");
+    private Utilisateur creerUtilisateurFromResultSet(ResultSet rs) throws SQLException {           
+        int id = rs.getInt("id_utilisateur");           
         String nom = rs.getString("nom");
         String prenom = rs.getString("prenom");
         String matricule = rs.getString("matricule");
