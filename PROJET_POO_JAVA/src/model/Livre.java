@@ -26,10 +26,4 @@ public class Livre {
     public int getQuantiteTotale() { return quantiteTotale; }
     public int getQuantiteDisponible() { return quantiteDisponible; }
 
-    // Setters
-    public void setTitre(String titre) { this.titre = titre; }
-    public void setAuteur(String auteur) { this.auteur = auteur; }
-    public void setIsbn(String isbn) { this.isbn = isbn; }
-    public void setQuantiteTotale(int qte) { this.quantiteTotale = qte; }
-    public void setQuantiteDisponible(int qte) { this.quantiteDisponible = qte; }
 }
