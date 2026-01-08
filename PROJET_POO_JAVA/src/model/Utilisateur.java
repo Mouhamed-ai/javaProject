@@ -52,4 +52,7 @@ public abstract class Utilisateur {
     public void setMatricule(String matricule) {
         this.matricule = matricule;
     }
+    public void setIdUtilisateur(int id_utilisateur) {
+        this.id_utilisateur = id_utilisateur;
+    }
 }
