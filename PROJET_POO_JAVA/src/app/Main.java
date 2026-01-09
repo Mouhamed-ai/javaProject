@@ -1,9 +1,9 @@
-package test;
-import dao.DBConnection;
+package app;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class TestConnection {
+public class Main {
     public static void main(String[] args) {
         System.out.println("=== Test de connexion à la base de données ===");
         
