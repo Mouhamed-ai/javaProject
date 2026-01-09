@@ -1,5 +1,5 @@
 package model;
-enum UtilisateurType {
+public enum UtilisateurType {
     ETUDIANT,
     ENSEIGNANT
 }

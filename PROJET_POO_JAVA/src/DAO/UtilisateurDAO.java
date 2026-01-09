@@ -13,6 +13,10 @@ public class UtilisateurDAO {
     public void ajouterUtilisateur(Utilisateur utilisateur) throws SQLException {
         String sql = "INSERT INTO utilisateurs (nom, prenom, matricule, type_utilisateur) "
                    + "VALUES (?, ?, ?, ?)";
+// PreparedStatement est un modèle de requête SQL pré-compilé avec des trous (?) qu'on remplit après avec des valeurs.
+
+// En une phrase :
+// C'est un formulaire pré-remplissable pour la base de données où on met les valeurs dans les champs □ après avoir créé le formulaire.
         
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
@@ -23,11 +27,11 @@ public class UtilisateurDAO {
             pstmt.setString(4, utilisateur.getTypeUtilisateur().toString());  
             
             int rowsAffected = pstmt.executeUpdate();
-            
+            // C'est la méthode qui exécute une requête SQL (INSERT, UPDATE, DELETE) et retourne le nombre de lignes affectées.
             
             if (rowsAffected > 0) {
                 try (ResultSet generatedKeys = pstmt.getGeneratedKeys()) {
-                    
+                    // getGeneratedKeys:C'est la méthode qui récupère les IDs auto-générés (comme AUTO_INCREMENT) après un INSERT.
                     if (generatedKeys.next()) {
                         utilisateur.setIdUtilisateur(generatedKeys.getInt(1));
                         
@@ -43,7 +47,8 @@ public class UtilisateurDAO {
         List<Utilisateur> utilisateurs = new ArrayList<>();
         String sql = "SELECT * FROM utilisateurs";
         
-         try (Connection conn = DBConnection.getConnection(); 
+         try (Connection conn = DBConnection.getConnection(); //Obtient une connexion à la base de données
+             Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {  
            
             while (rs.next()) { 
