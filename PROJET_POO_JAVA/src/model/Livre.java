@@ -1,7 +1,7 @@
 package model;
 
 public class Livre {
-    private final int idLivre;
+    private  int idLivre;
     private String titre;
     private String auteur;
     private String isbn;
@@ -25,5 +25,8 @@ public class Livre {
     public String getIsbn() { return isbn; }
     public int getQuantiteTotale() { return quantiteTotale; }
     public int getQuantiteDisponible() { return quantiteDisponible; }
+      public void setIdLivre(int idLivre) {
+        this.idLivre = idLivre;
+    }
 
 }
