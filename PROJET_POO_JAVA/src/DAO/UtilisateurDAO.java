@@ -75,4 +75,50 @@ public class UtilisateurDAO {
             return new Enseignant(id, nom, prenom, matricule);
         }
     }
+
+     public boolean modifierUtilisateur(Utilisateur utilisateur) throws SQLException {
+        String sql = "UPDATE utilisateurs SET nom = ?, prenom = ?, matricule = ?, "
+                   + "type_utilisateur = ? WHERE id_utilisateur = ?";
+        
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            
+            pstmt.setString(1, utilisateur.getNom());
+            pstmt.setString(2, utilisateur.getPrenom());
+            pstmt.setString(3, utilisateur.getMatricule());
+            pstmt.setString(4, utilisateur.getTypeUtilisateur().toString());
+            pstmt.setInt(5, utilisateur.getIdUtilisateur());
+            
+            int rowsAffected = pstmt.executeUpdate();
+            
+            if (rowsAffected > 0) {
+                System.out.println("Utilisateur modifié avec succès (ID: " + utilisateur.getIdUtilisateur() + ")");
+                return true;
+            } else {
+                System.out.println("Aucun utilisateur trouvé avec l'ID: " + utilisateur.getIdUtilisateur());
+                return false;
+            }
+        }
+    }
+
+    public boolean supprimerUtilisateur(int id) throws SQLException {
+        String sql = "DELETE FROM utilisateurs WHERE id_utilisateur = ?";
+        
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            
+            pstmt.setInt(1, id);
+            
+            int rowsAffected = pstmt.executeUpdate();
+            
+            if (rowsAffected > 0) {
+                System.out.println("Utilisateur supprimé avec succès (ID: " + id + ")");
+                return true;
+            } else {
+                System.out.println("Aucun utilisateur trouvé avec l'ID: " + id);
+                return false;
+            }
+        }
+    }
+    
 }
