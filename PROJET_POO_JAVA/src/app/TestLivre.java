@@ -43,8 +43,8 @@ public class TestLivre {
         System.out.println("\n5. Test de la suppression (ID : " + idGenere + ") :");
         if (idGenere != 0) {
             // Décommentez la ligne suivante si vous voulez vraiment tester la suppression
-            // dao.supprimerLivre(idGenere); 
-            // System.out.println("Livre supprimé !");
+            dao.supprimerLivre(idGenere); 
+             System.out.println("Livre supprimé !");
         }
 
         System.out.println("\n===== FIN DU TEST LIVRE =====");
