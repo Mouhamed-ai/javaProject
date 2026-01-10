@@ -1,6 +1,10 @@
 package dao;
 
 import model.Emprunt;
+import dao.DBConnection;
+import dao.LivreDAO;
+import dao.UtilisateurDAO;
+
 
 import java.sql.*;
 import java.time.LocalDate;
