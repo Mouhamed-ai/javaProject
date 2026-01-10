@@ -29,4 +29,24 @@ public class Livre {
         this.idLivre = idLivre;
     }
 
+
+public void setTitre(String titre) {
+    this.titre = titre;
+}
+
+public void setAuteur(String auteur) {
+    this.auteur = auteur;
+}
+
+public void setIsbn(String isbn) {
+    this.isbn = isbn;
+}
+
+public void setQuantiteTotale(int quantiteTotale) {
+    this.quantiteTotale = quantiteTotale;
+}
+
+public void setQuantiteDisponible(int quantiteDisponible) {
+    this.quantiteDisponible = quantiteDisponible;
+  }
 }
