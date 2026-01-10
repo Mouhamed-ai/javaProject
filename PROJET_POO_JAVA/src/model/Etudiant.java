@@ -2,8 +2,12 @@ package model;
 
 public class Etudiant extends Utilisateur {
 
-    public EtudiantString nom, String prenom, String matricule) {
-        super( nom, prenom, matricule, UtilisateurType.ETUDIANT);
+    public Etudiant(String nom, String prenom, String matricule) {
+        super(nom, prenom, matricule, UtilisateurType.ETUDIANT);
+    }
+
+      public Etudiant(int id, String nom, String prenom, String matricule) {
+        super(id, nom, prenom, matricule, UtilisateurType.ETUDIANT);
     }
 
     @Override

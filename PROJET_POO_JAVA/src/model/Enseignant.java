@@ -6,6 +6,10 @@ public class Enseignant extends Utilisateur {
         super(nom, prenom, matricule, UtilisateurType.ENSEIGNANT);
     }
 
+    public Enseignant(int id, String nom, String prenom, String matricule) {
+        super(id, nom, prenom, matricule, UtilisateurType.ENSEIGNANT);
+    }
+
     @Override
     public int getMaxEmprunts() {
         return 5;

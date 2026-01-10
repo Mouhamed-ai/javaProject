@@ -1,8 +1,5 @@
 package model;
-public enum UtilisateurType {
-    ETUDIANT,
-    ENSEIGNANT
-}
+
 
 public abstract class Utilisateur {
 
@@ -19,6 +16,14 @@ public abstract class Utilisateur {
         this.matricule = matricule;
         this.type_utilisateur = type_utilisateur;
     }
+     public Utilisateur(int id_utilisateur, String nom, String prenom, String matricule, UtilisateurType type_utilisateur) {
+        this.id_utilisateur = id_utilisateur;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.matricule = matricule;
+        this.type_utilisateur = type_utilisateur;
+    }
+
 
     public abstract int getMaxEmprunts();
 

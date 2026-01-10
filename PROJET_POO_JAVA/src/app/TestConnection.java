@@ -1,41 +1,36 @@
 package app;
 import dao.DBConnection;
-
-
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 public class TestConnection {
     public static void main(String[] args) {
-        System.out.println("=== Test MySQL sans Class.forName ===");
+        System.out.println("=== Test de connexion à la base de données ===");
         
-        // Essayer différentes URLs
-        String[] urls = {
-            "jdbc:mysql://localhost:3306/",
-            "jdbc:mysql://127.0.0.1:3306/",
-            "jdbc:mysql://localhost:3306/mysql?useSSL=false",
-            "jdbc:mysql://localhost:3306/?allowPublicKeyRetrieval=true"
-        };
-        
-        for (String url : urls) {
-            System.out.println("\nEssai: " + url);
-            try {
-                // JDBC 4.0+ charge le driver automatiquement
-                Connection conn = DriverManager.getConnection(url, "root", "");
-                System.out.println("✅ SUCCÈS!");
+        try {
+            // Test 1: Connexion simple
+            System.out.println("1. Tentative de connexion...");
+            Connection conn = DBConnection.getConnection();
+            
+            if (conn != null && !conn.isClosed()) {
+                System.out.println("✅ SUCCÈS: Connexion établie !");
                 
-                // Tester
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery("SELECT VERSION()");
-                if (rs.next()) {
-                    System.out.println("Version: " + rs.getString(1));
-                }
-                
+                // Afficher le nom de la base de données connectée
+                System.out.println("   Base de données: " + conn.getCatalog());
+
+                // Fermer proprement
                 conn.close();
-                break; // Arrêter au premier succès
-                
-            } catch (SQLException e) {
-                System.out.println("❌ Échec: " + e.getMessage());
+                System.out.println("✅ Connexion fermée proprement.");
+            } else {
+                System.out.println("❌ ÉCHEC: Connexion null ou fermée.");
             }
+            
+        } catch (SQLException e) {
+            System.out.println("❌ ERREUR SQL: " + e.getMessage());
+            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println("❌ ERREUR Générale: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 }
